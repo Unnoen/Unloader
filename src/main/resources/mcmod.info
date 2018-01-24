@@ -1,0 +1,16 @@
+[
+{
+  "modid": "unloader",
+  "name": "Unloader",
+  "description": "Unload dimensions not in use.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Unnoen"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
