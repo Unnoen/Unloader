@@ -39,14 +39,14 @@ public class Unloader
         public void tick(TickEvent.ServerTickEvent tick) {
             if (tick.phase == TickEvent.Phase.END && (++tickIndex == 600)) {
                 tickIndex = 0;
-                for (WorldServer worldServer : DimensionManager.getWorlds()) {
-                    int id = worldServer.provider.getDimension();
-                    if (id != 0
+                for (int dimension : DimensionManager.getIDs()) {
+                    WorldServer worldServer = DimensionManager.getWorld(dimension);
+                    if (dimension != 0
                             && worldServer.getChunkProvider().getLoadedChunkCount() == 0
                             && worldServer.playerEntities.isEmpty()
                             && worldServer.loadedEntityList.isEmpty()
                             && worldServer.loadedTileEntityList.isEmpty()) {
-                        DimensionManager.unloadWorld(id);
+                        DimensionManager.unloadWorld(dimension);
                     }
                 }
             }
