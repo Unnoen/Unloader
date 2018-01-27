@@ -1,6 +1,7 @@
 package com.unnoen.unloader;
 
 import net.minecraft.world.WorldServer;
+import net.minecraft.world.gen.ChunkProviderServer;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -41,8 +42,10 @@ public class Unloader
                 tickIndex = 0;
                 for (int dimension : DimensionManager.getIDs()) {
                     WorldServer worldServer = DimensionManager.getWorld(dimension);
+                    ChunkProviderServer provider = worldServer.getChunkProvider();
                     if (dimension != 0
-                            && worldServer.getChunkProvider().getLoadedChunkCount() == 0
+                            && !DimensionManager.isWorldQueuedToUnload(dimension)
+                            && provider.getLoadedChunkCount() == 0
                             && worldServer.playerEntities.isEmpty()
                             && worldServer.loadedEntityList.isEmpty()
                             && worldServer.loadedTileEntityList.isEmpty()) {
