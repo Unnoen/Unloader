@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = Unloader.MODID, version = Unloader.VERSION)
+@Mod(modid = Unloader.MODID, version = Unloader.VERSION, acceptableRemoteVersions = "*")
 public class Unloader
 {
     public static final String MODID = "unloader";
