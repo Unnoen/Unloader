@@ -12,10 +12,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = "unloader", name = "Unloader", version = "{@version}", acceptableRemoteVersions = "*", acceptedMinecraftVersions = "[1.10.2,1.12.2]")
-public class Unloader
-{
+@Mod(modid = "unloader", name = "Unloader", version = "{@version}", acceptableRemoteVersions = "*", acceptedMinecraftVersions = "1.12.2")
 
+public class Unloader {
     public static Logger logger;
 
     @EventHandler
@@ -40,6 +39,7 @@ public class Unloader
                     WorldServer worldServer = DimensionManager.getWorld(dimension);
                     ChunkProviderServer provider = worldServer.getChunkProvider();
                     if (dimension != 0
+                            && !DimensionManager.isWorldQueuedToUnload(dimension)
                             && provider.getLoadedChunkCount() == 0
                             && worldServer.playerEntities.isEmpty()
                             && worldServer.loadedEntityList.isEmpty()
